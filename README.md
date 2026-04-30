@@ -1,209 +1,164 @@
-# Sistema de Control de Asistencia de Empleados
-### Employee Attendance System
-Aplicación web para el registro y gestión de asistencia del personal, desarrollada en **PHP puro con arquitectura MVC desde cero**, **Programación Orientada a Objetos (POO)** y **MariaDB** como base de datos.
+# 🍽️ Sistema de Venta de Comida "KLETA"
 
-## Tabla de Contenidos
+Sistema web para la gestión de venta de comida con facilidades de pago diario, semanal y mensual.  
+Desarrollado como proyecto final del curso de **PHP Web** en **SENATI**.
 
-- [Descripción del Negocio](#-1-descripción-del-negocio)
-- [Problema y Solución](#-2-problema-y-solución)
-- [Preanálisis](#-3-preanálisis)
-- [Análisis de Requisitos](#-4-análisis-de-requisitos)
-- [Stack Tecnológico](#-stack-tecnológico)
-- [Arquitectura del Proyecto](#-arquitectura-del-proyecto)
-- [Instalación](#-instalación)
+---
+
+## Índice
+
+1. [Descripción del Negocio](#1-descripción-del-negocio)
+2. [Identificar el Problema y Solución](#2-identificar-el-problema-y-solución)
+3. [Preanálisis](#3-preanálisis)
+   - [Necesidades](#31-necesidades)
+   - [Estudio de Viabilidad](#32-estudio-de-viabilidad)
+   - [Alcance del Sistema](#33-alcance-del-sistema)
+4. [Análisis](#4-análisis)
+   - [Definición de Requisitos](#41-definición-de-requisitos)
+     - [Requisitos Funcionales](#requisitos-funcionales)
+     - [Requisitos No Funcionales](#requisitos-no-funcionales)
+   - [Análisis de Requisitos](#42-análisis-de-requisitos)
+5. [Imágenes del Problema](#5-imágenes-del-problema)
+6. [Imágenes del Negocio](#6-imágenes-del-negocio)
+
+---
 
 ## 1. Descripción del Negocio
 
-Las organizaciones modernas necesitan gestionar la asistencia de su personal de forma precisa y centralizada. Este sistema reemplaza los registros manuales en papel o planillas físicas, eliminando problemas como:
+| Campo       | Detalle                                              |
+|-------------|------------------------------------------------------|
+| **Nombre**  | Restaurante Jugería "KLETA"                          |
+| **Giro**    | Financiera formal registrada por SUNAT               |
+| **Tamaño**  | Pequeña empresa, operación individual o familiar     |
 
-- Registros incompletos o manipulados
-- Alto costo administrativo por procesar asistencias manualmente
-- Imposibilidad de generar reportes históricos de forma automática
-- Falta de trazabilidad y auditoría sobre las marcaciones
-- Dependencia de personal para consolidar información
+**Contexto:**  
+Negocio muy común en el Perú donde una pequeña familia ofrece servicio de comida a personas e instituciones con registro de boletas y facturas, cobrando diariamente, semanalmente o mensualmente, con servicio a domicilio o pedidos con reserva y recojo.
 
-## 2. Problema y Solución
+**Justificación:**  
+Se necesita un sistema digital para reemplazar el cuaderno manual del cobrador, evitar errores y tener un control claro de cada consumo y pedido de los alimentos.
 
-### Problema Identificado
-Las empresas carecen de un sistema digital accesible para registrar, monitorear y gestionar la asistencia de sus empleados. El control manual genera imprecisiones, pérdidas de información y dificulta la toma de decisiones basadas en datos confiables.
+---
 
-### Causas
-- Ausencia de una herramienta digital centralizada para marcar asistencia
-- Los registros en papel se pierden, deterioran o se alteran fácilmente
-- No existe diferenciación de roles entre quién administra y quién solo consulta
-- Es imposible generar reportes históricos de forma automática
+## 2. Identificar el Problema y Solución
 
-### Efectos
-- Pérdida económica por pago incorrecto de horas trabajadas
-- Incapacidad de detectar patrones de ausentismo a tiempo
-- Mayor carga operativa para el área de Recursos Humanos
+### Problema
 
-### Solución Propuesta
+La persona encargada lleva el registro de ventas y pensionistas en un cuaderno o en papel, lo que genera:
 
-Desarrollar una aplicación web con **PHP + POO + MVC** que permita:
+- Errores en los registros
+- Pérdida de información
+- Dificultad para saber cuánto debe cada cliente
+- Falta de control sobre cuántos pensionistas llegaron a comer cada día
 
-- Autenticar usuarios con roles diferenciados (administrador / empleado)
-- Registrar asistencia con fecha y hora exactas usando PDO y MariaDB
-- Gestionar el catálogo de empleados y departamentos (CRUD completo)
-- Consultar y filtrar el historial de asistencias por empleado y fecha
-- Visualizar un dashboard con el estado de asistencia del día en curso
-- 
+### Solución Tecnológica
+
+Desarrollar un sistema web con **PHP** y **MySQL** que permita:
+
+- Registrar clientes
+- Gestionar cobros diarios, semanales y mensuales
+- Mostrar en todo momento el estado de cada pedido
+- Consultar el historial de pagos de cada cliente
+
+---
+
 ## 3. Preanálisis
 
-### Necesidades Identificadas
+### 3.1 Necesidades
 
-1. Registrar quién entra y sale, con fecha y hora exacta
-2. Panel de control con el estado de asistencia del día
-3. Administrar el catálogo de empleados (crear, editar, eliminar)
-4. Organizar empleados por departamentos
-5. Consultar historial de asistencias filtrado por empleado y período
-6. Autenticar usuarios para proteger la información del sistema
-7. Diferenciar permisos entre administrador y empleado
+El Restaurante Jugería "KLETA" requiere digitalizar su proceso de gestión de ventas y cobros. Las principales necesidades identificadas son:
 
-### Estudio de Viabilidad
+- Controlar el consumo diario de cada pedido
+- Gestionar cobros en modalidad diaria, semanal y mensual
+- Emitir comprobantes de pago (boletas y facturas) conforme a SUNAT
+- Registrar pedidos con reserva, recojo y servicio a domicilio
+- Consultar el historial de pagos y deudas por cliente
+- Saber cuántos pensionistas asistieron en un día determinado
 
-#### Viabilidad Técnica
-- PHP 8+ disponible en prácticamente cualquier servidor web
-- MariaDB es un gestor gratuito, robusto y ampliamente documentado
-- Apache con `mod_rewrite` disponible en XAMPP para desarrollo local
-- La POO permite estructurar el sistema con clases, herencia y encapsulamiento
-- El patrón MVC está documentado en [`CONCEPTS.md`](./CONCEPTS.md)
+### 3.2 Estudio de Viabilidad
 
-#### Viabilidad Económica
-- Stack completamente open source y gratuito (PHP, MariaDB, Apache, Git)
-- Entorno de desarrollo levantable localmente con XAMPP sin costo
-- No se requieren licencias de software adicionales
+**Viabilidad Técnica:**  
+El sistema se desarrollará con tecnologías ampliamente disponibles y de uso libre: **PHP puro** para el backend y **MySQL** como motor de base de datos. El negocio cuenta con al menos un equipo con acceso a navegador web, lo que hace viable el uso de una aplicación web sin necesidad de instalación local.
 
-#### Viabilidad Operacional
-- Los usuarios solo necesitan un navegador web para acceder
-- Administrable de forma remota una vez desplegado
-- La separación en módulos facilita la capacitación del personal
+**Viabilidad Económica:**  
+Al tratarse de un proyecto académico desarrollado en SENATI, no se incurre en costos de licencias de software. El mantenimiento futuro puede ser asumido por el mismo desarrollador o un técnico básico, lo que reduce el costo operativo frente a sistemas comerciales.
 
-### Alcance del Sistema
+**Viabilidad Operativa:**  
+El sistema está diseñado para ser simple e intuitivo, adaptado al perfil del usuario (cobrador o administrador del negocio familiar). Reemplaza directamente el cuaderno manual sin requerir conocimientos técnicos avanzados.
 
-#### Dentro del alcance
-- Autenticación con sesiones PHP y roles (administrador / empleado)
-- Módulo de empleados: CRUD completo
-- Módulo de departamentos: gestión de áreas
-- Módulo de asistencia: registro de entrada/salida e historial
-- Dashboard con resumen de asistencias del día
-- Layouts reutilizables (header, footer, navbar) — principio DRY
-- Base de datos con `schema.sql` y datos de prueba `seeds.sql`
+### 3.3 Alcance del Sistema
 
-#### Fuera del alcance
-- Integración con dispositivos biométricos
-- Módulo de nómina o cálculo de salarios
-- Aplicación móvil nativa (iOS / Android)
-- Notificaciones por correo o SMS
-- Integración con sistemas ERP externos
+El sistema cubrirá las siguientes funcionalidades dentro del contexto del Restaurante Jugería "KLETA":
+
+- **Registro de consumo:** ingreso diario de los platos consumidos por mesa o pedido
+- **Gestión de cobros:** registro de pagos diarios, semanales y mensuales con seguimiento de deudas
+- **Pedidos:** registro de pedidos con modalidad presencial, a domicilio o con reserva
+- **Reportes básicos:** listado de asistencia diaria, deudas pendientes e historial de pagos
+- **Comprobantes:** generación de boletas y facturas en formato digital
+
+**Fuera del alcance:**
+- Integración con plataformas de pago electrónico (Yape, Plin, etc.)
+- App móvil nativa
+- Módulo de inventario o control de insumos
 
 ---
 
-## 4. Análisis de Requisitos
+## 4. Análisis
 
-### 4.1 Requisitos Funcionales
+### 4.1 Definición de Requisitos
 
-### 4.2 Requisitos No Funcionales
+#### Requisitos Funcionales
 
-## Stack Tecnológico
+| ID   | Descripción |
+|------|-------------|
+| RF02 | El sistema debe registrar el consumo diario de cada cliente por fecha |
+| RF03 | El sistema debe gestionar cobros en modalidad diaria, semanal y mensual |
+| RF04 | El sistema debe mostrar el saldo pendiente de cada cliente en tiempo real |
+| RF05 | El sistema debe registrar pedidos indicando modalidad (presencial, domicilio o reserva) |
+| RF06 | El sistema debe generar un reporte diario de asistencia de pensionistas |
+| RF07 | El sistema debe registrar pagos y generar historial por cliente |
+| RF08 | El sistema debe permitir emitir boletas y facturas en formato digital |
+| RF10 | El sistema debe tener un módulo de inicio de sesión para el administrador |
 
-| Capa | Tecnología |
-|---|---|
-| **Backend** | PHP 8+ — POO (Programación Orientada a Objetos) — MVC desde cero |
-| **Base de datos** | MariaDB — PDO (PHP Data Objects) con prepared statements |
-| **Frontend** | HTML5, CSS3, JavaScript — Vistas PHP con layouts reutilizables |
-| **Servidor web** | Apache — Reescritura de URLs vía `.htaccess` |
-| **Control de versiones** | Git + GitHub |
-| **Configuración** | Variables de entorno (`.env`) para credenciales |
+#### Requisitos No Funcionales
+
+| ID    | Descripción |
+|-------|-------------|
+| RNF01 | El sistema debe ser accesible desde cualquier navegador web moderno |
+| RNF02 | La interfaz debe ser simple e intuitiva para usuarios sin conocimientos técnicos |
+| RNF03 | El sistema debe responder a las solicitudes en menos de 3 segundos |
+| RNF04 | Los datos deben almacenarse de forma segura en una base de datos MySQL |
+| RNF05 | El sistema debe estar disponible durante el horario de operación del negocio |
+| RNF06 | El código debe seguir buenas prácticas de desarrollo con PHP puro |
+| RNF07 | El sistema debe ser escalable para agregar nuevos módulos en el futuro |
+
+### 4.2 Análisis de Requisitos
+
+A partir de los requisitos identificados, se determinan los siguientes módulos principales del sistema:
+
+**Módulo de Consumo Diario**  
+Registra qué platos consumió cada cliente en el día, permitiendo al cobrador llevar un control exacto sin usar papel. Se vincula directamente al módulo de cobros para calcular el monto acumulado.
+
+**Módulo de Cobros y Pagos**  
+Centraliza el registro de pagos recibidos y genera automáticamente el saldo pendiente por cliente según la modalidad (diaria, semanal o mensual). Incluye historial completo de transacciones.
+
+**Módulo de Pedidos**  
+Gestiona los pedidos con reserva anticipada o servicio a domicilio, indicando fecha, hora, dirección de entrega y estado del pedido (pendiente, en preparación, entregado).
+
+**Módulo de Reportes**  
+Genera reportes de asistencia diaria, listado de deudores, y resumen de ingresos por período, facilitando la toma de decisiones del administrador del negocio.
+
 ---
 
-## Arquitectura del Proyecto
+## 5. Imágenes del Problema
 
-El sistema aplica **POO** y **MVC** implementado desde cero. Los 4 pilares de POO en el proyecto:
+![Problema 1](recursos/problema.jpeg)
+![Problema 2](recursos/problema1.jpeg)
 
-### Flujo de una Petición
+---
 
+## 6. Imágenes del Negocio
 
-### Estructura del Proyecto
+![Negocio 1](recursos/negocio.jpeg)
+![Negocio 2](recursos/negocio1.jpeg)
 
-## Instalación
-
-### Requisitos previos
-- PHP 8+
-- Apache con `mod_rewrite` habilitado (XAMPP recomendado)
-- MariaDB / MySQL
-
-### Pasos
-
-```bash
-# 1. Clonar el repositorio
-git clone https://github.com/ojitoslanda/employee-attendance-system.git
-cd employee-attendance-system
-
-# 2. Configurar variables de entorno
-cp .env.example .env
-# Editar .env con tus credenciales de base de datos
-
-# 3. Crear la base de datos
-
-
-# 4. Apuntar el servidor web a la carpeta public/
-
-```
-
-## TRELLO
-
-### DIAGRAMA DE FIGMA UI/UX
-
-## Base de datos
-```sql
-create database senai_asistencia;
-use senai_asistencia;
-
-
-create table cargo (
-id_cargo int auto_increment primary key,
-nombre_cargo varchar(50) not null
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-create table empleado(
-id_empleado int primary key auto_increment,
-nombre varchar(100) not null,
-apellido varchar(100) not null,
-dni varchar(8) unique not null,
-celular varchar(20),
-correo varchar (100) not null unique,
-id_cargo int not null,
-fecha_registro timestamp default current_timestamp,
-foreign key (id_cargo) references cargo(id_cargo)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-create table usuario(
-id_usuario int auto_increment primary key,
-roles enum('admin', 'superadmin') default 'admin',
-nombre_usuario varchar (150) not null,
-clave varchar(250) not null
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
-create table asistencia(
-id_asistencia int auto_increment primary key,
-fecha date not null,
-hora_entrada timestamp default current_timestamp not null,
-hora_salida timestamp default current_timestamp not null,
-estado enum('asistio', 'tardanza', 'falto') default 'falto' not null,
-id_empleado int not null,
-foreign key (id_empleado) references empleado(id_empleado)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-```
-
-### Diagrama Entidad-Relacion (DER)
-
- 
-### Modelo Relacional (MR)
-![MODELO_RELACIONAL](https://raw.githubusercontent.com/ojitoslanda/testing/refs/heads/master/img/db.png)
-
-### Cardinalidades
-
-
-
-
+---
