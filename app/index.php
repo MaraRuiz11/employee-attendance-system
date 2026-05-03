@@ -1,4 +1,5 @@
 <?php 
-require_once 'views/auth/login.php';
+
+require_once 'views/home/landing.php';
 
 
